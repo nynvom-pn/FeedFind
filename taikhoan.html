@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang của tôi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #24508c;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #24508c;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .sidebar h3 {
+            margin: 0 0 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .sidebar a:hover {
+            background-color: #1c3d65;
+        }
+
+        .main-content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+
+        .details-link {
+    text-decoration: none; /* Xóa gạch chân của link */
+}
+
+#points button {
+    width: 101.5%; /* Nút có chiều ngang bằng ảnh */
+    padding: 15px 0; /* Chiều cao nút */
+    font-size: 18px;
+    background-color: #24508c; /* Màu nền */
+    color: white; /* Màu chữ */
+    border: none;
+    border-radius: 0; /* Không bo góc */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#points button:hover {
+    background-color: #729fde; /* Màu nền khi hover */
+}
+
+        #detail-button {
+            width: 98%; /* Chiều ngang bằng chiều rộng hình */
+            padding: 15px 0; /* Tăng chiều cao nút */
+            font-size: 18px;
+            background-color: #24508c; /* Màu nền */
+            color: white; /* Màu chữ */
+            border: none;
+            border-radius: 0; /* Không bo góc */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #detail-button:hover {
+            background-color: #729fde; /* Màu nền khi hover */
+        }
+
+
+        .order-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .order-card h3 {
+            color: #24508c;
+            margin: 0 0 15px;
+        }
+
+        .order-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .order-details img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .order-info {
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .order-info p {
+            margin: 5px 0;
+        }
+
+        .order-actions {
+            text-align: right;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .btn-primary {
+            background-color: #24508c;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1c3d65;
+        }
+
+        .btn-secondary {
+            background-color: #f4f4f4;
+            color: #333;
+            border: 1px solid #ccc;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+   .vouchers-container {
+        display: flex;
+        flex-direction: row; /* Đặt các voucher theo hàng ngang */
+        gap: 20px; /* Khoảng cách giữa các voucher */
+    }
+
+    .voucher-item {
+        background-color: #fff; /* Màu nền của khung */
+        padding: 15px; /* Khoảng cách bên trong khung */
+        border-radius: 10px; /* Bo góc cho khung */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng cho khung */
+        text-align: center; /* Căn giữa nội dung bên trong */
+        max-width: 350px; /* Kích thước tối đa của mỗi khung */
+        transition: background-color 0.3s ease, transform 0.3s ease; /* Thêm hiệu ứng khi đổi màu và phóng to */
+    }
+
+    .voucher-item:hover {
+        background-color: #f4f4f4; /* Màu nền khi di chuột vào */
+        transform: scale(1.05); /* Phóng to nhẹ khi di chuột vào */
+    }
+
+    .voucher-item img {
+        width: 100%; /* Chiều rộng của ảnh sẽ là 100% container */
+        max-width: 300px; /* Tùy chỉnh kích thước tối đa của ảnh */
+        object-fit: cover; /* Đảm bảo ảnh không bị méo */
+        border-radius: 8px; /* Bo góc cho ảnh */
+    }
+
+    .voucher-item p {
+        margin-top: 10px; /* Khoảng cách giữa ảnh và chữ */
+        color: #24508c; /* Màu chữ */
+        font-size: 16px; /* Kích thước chữ */
+    }
+ 
+     /* Container chính của thông báo */
+    .notification-container {
+        margin-top: 20px; /* Khoảng cách trên */
+    }
+
+    /* Khung thông báo */
+    .notification-item {
+        display: block; /* Chiếm toàn bộ chiều ngang */
+        background-color: #fff; /* Màu nền khung */
+        color: #24508c; /* Màu chữ */
+        padding: 20px; /* Khoảng cách bên trong khung */
+        text-align: left; /* Căn lề trái cho nội dung */
+        text-decoration: none; /* Loại bỏ gạch chân liên kết */
+        border: 1px solid #ccc; /* Đường viền khung */
+        border-radius: 8px; /* Bo góc khung */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+        width: 100%; /* Đảm bảo khung phủ toàn bộ chiều ngang */
+        transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng khi hover */
+    }
+
+    /* Hiệu ứng khi di chuột vào khung thông báo */
+    .notification-item:hover {
+        background-color: #f4f4f4; /* Màu nền khi hover */
+        transform: scale(1.02); /* Phóng to nhẹ khung */
+        cursor: pointer; /* Đổi con trỏ thành dạng tay */
+    }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Tài khoản</h1>
+    </header>
+
+    <div class="sidebar">
+        <h3>Tài Khoản</h3>
+        <img src="tk.png" alt="taikhoan" style="width: 100%; height: 10%; margin-bottom: 0px;">
+        <a href="#" onclick="showContent('reviews')">Bài đánh giá</a>
+        <a href="#" onclick="showContent('points')">Điểm thưởng</a>
+        <a href="#" onclick="showContent('notifications')">Thông Báo</a>
+        <a href="#" onclick="showContent('vouchers')">Kho Voucher</a>
+	<a href="#" onclick="showContent('setting')">Cài đặt & Quyền riêng tư</a>
+	<a href="#" onclick="showContent('help')">Trợ giúp</a>
+	<a href="#" onclick="showContent('opinion')">Đóng góp ý kiến</a>
+    <a href="file:///D:/NMM(TH)/index.html" class="logout">Đăng xuất</a>
+    </div>
+
+    <div class="main-content">
+        <!-- Bài đánh giá -->
+        <div id="reviews" class="content">
+            <div class="order-card">
+                <h3>Lĩnh vực: Làm đẹp</h3>
+                <div class="order-details">
+                    <img src="cocoonn.png" alt="Sản phẩm">
+                    <div class="order-info">
+                        <p><strong>Nước tẩy trang Cocoon bí đao</strong></p>
+                        <p>Nội dung bài viết: Da mình là da nhạy cảm rất khó hợp với các loại mỹ phẩm, tuy nhiên khi sử dụng sản phẩm này, mình đã tìm được chân ái. Dịu nhẹ, dễ chịu, êm ái.</p>
+                    </div>
+                    <div class="order-actions">
+                        <button class="btn btn-primary">
+                            <a href="cocoon.html" style="color: white; text-decoration: none;">Xem bài viết</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Điểm thưởng -->
+        <div id="points" class="content">
+            <img src="point.png" alt="FeedFind Logo" >
+            <a href="nhap.html" class="details-link">
+                <button>Xem chi tiết</button>
+            </a>
+            
+        </div>
+
+        <!-- Thông Báo -->
+        <div id="notifications" class="content">
+    <h2>Thông Báo</h2>
+    <div class="notification-container">
+        <a href="cocoon.html" class="notification-item">
+           ❤️ matchalatte và 99 người khác đã tương tác vào bài đánh giá của bạn!
+        </a>
+    </div>
+	<div class="notification-container">
+        <a href="cocoon.html" class="notification-item">
+           💬 oreo đã bình luận vào bài viết của bạn!
+        </a>
+    </div>
+
+	</div>
+
+
+        <!-- Kho Voucher -->
+      <div id="vouchers" class="content">
+    <h2>Kho Voucher</h2>
+    <div class="vouchers-container">
+        <div class="voucher-item">
+            <img src="voucher.png" alt="Voucher 1">
+        </div>
+        <div class="voucher-item">
+            <img src="voucher2.png" alt="Voucher 2">
+        </div>
+    </div>
+</div>
+
+	<!-- Cài đặt và quyền riêng tư -->
+        <div id="setting" class="content">
+	<a class="notification-item">
+	    Bảo mật </a>
+	<a class="notification-item">
+	    Thông tin cá nhân </a>
+	<a class="notification-item">
+	    Liên kết tài khoản </a>
+        <a class="notification-item">
+	    Trung tâm quyền riêng tư </a>
+	<a class="notification-item">
+	    Ngôn ngữ và khu vực </a>
+	<a class="notification-item">
+	    Nhật ký hoạt động </a>
+	<a class="notification-item">
+	    Người theo dõi và nội dung công khai </a>
+	<a class="notification-item">
+	    Tài khoản đã chặn </a>
+	<a class="notification-item">
+	    Tài khoản đã hạn chế </a>
+	  
+                   </div>
+
+	<!-- Trợ giúp -->
+        <div id="help" class="content">
+            <a class="notification-item">
+                Điều khoản dịch vụ </a>
+            <a class="notification-item">
+                Chính sách quyền riêng tư </a>
+            <a class="notification-item">
+                Chính sách cookie </a>
+                <a class="notification-item">
+                Tiêu chuẩn cộng đồng </a>
+            <a class="notification-item">
+                Yêu cầu hỗ trợ </a>
+        </div>
+
+	<!-- Ý kiến -->
+    <div id="opinion" class="content">
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    background-color: #f9f9f9;
+                }
+                .container {
+                    max-width: 400px;
+                    margin: 30px auto;
+                    background: white;
+                    padding: 20px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    border-radius: 10px;
+                }
+                .container h2 {
+                    text-align: center;
+                }
+                .container form {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .container input, textarea {
+                    margin: 10px 0;
+                    padding: 10px;
+                    font-size: 16px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+                .container button {
+                    margin-top: 10px;
+                    padding: 10px;
+                    background-color: #24508c;
+                    color: white;
+                    border: none;
+                    font-size: 16px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                /* Modal Styles */
+                .modal {
+                    display: none; /* Ẩn modal mặc định */
+                    position: fixed;
+                    z-index: 1000;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.4); /* Nền mờ */
+                }
+                .modal-content {
+                    background-color: #fff;
+                    margin: 15% auto;
+                    padding: 20px;
+                    border-radius: 8px;
+                    width: 50%;
+                    text-align: center;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }
+                .modal-content p {
+                    font-size: 18px;
+                    color: #24508c;
+                    margin-bottom: 20px;
+                }
+                .modal-content button {
+                    padding: 10px 20px;
+                    background-color: #24508c;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 16px;
+                    cursor: pointer;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container" id="create-post">
+                <h2>Đóng góp ý kiến</h2>
+                <form id="postForm">
+                    <label for="title">Tiêu đề:</label>
+                    <input type="text" id="title" name="title" required>
+        
+                    <label for="content">Nội dung:</label>
+                    <textarea id="content" name="content" rows="6" required></textarea>
+        
+                    <label for="image">Hình ảnh (nếu có):</label>
+                    <input type="file" id="image" name="image" accept="image/*">
+                    
+                    <button type="submit" class="btn btn-primary">Gửi ý kiến</button>
+                </form>
+            </div>
+        
+            <!-- Modal thông báo -->
+            <div id="thankyou-modal" class="modal">
+                <div class="modal-content">
+                    <p>Cảm ơn bạn vì đã đóng góp ý kiến, chúng tôi sẽ tiếp thu và khắc phục ạ!</p>
+                    <button onclick="closeModal()">Đóng</button>
+                </div>
+            </div>
+        
+            <script>
+                // Hàm hiển thị modal
+                function showThankYouModal() {
+                    document.getElementById('thankyou-modal').style.display = 'block';
+                }
+        
+                // Hàm đóng modal
+                function closeModal() {
+                    document.getElementById('thankyou-modal').style.display = 'none';
+                }
+        
+                // Xử lý sự kiện khi gửi ý kiến
+                document.getElementById('postForm').addEventListener('submit', function (e) {
+                    e.preventDefault(); // Ngăn form submit mặc định
+        
+                    // Lấy dữ liệu từ form
+                    const title = document.getElementById('title').value;
+                    const content = document.getElementById('content').value;
+                    const image = document.getElementById('image').files[0];
+        
+                    // Tạo bài viết mới (nếu cần)
+                    if (title && content) {
+                        console.log('Tiêu đề:', title);
+                        console.log('Nội dung:', content);
+                        if (image) {
+                            console.log('Hình ảnh:', image.name);
+                        }
+                    }
+        
+                    // Hiển thị modal cảm ơn
+                    showThankYouModal();
+        
+                    // Reset form sau khi gửi ý kiến
+                    document.getElementById('postForm').reset();
+                });
+            </script>
+        </body>
+        </html>
+
+
+<script>
+    // Hiển thị phần nội dung khi bấm vào liên kết
+    function showContent(contentId) {
+        // Ẩn tất cả các phần nội dung
+        let contents = document.querySelectorAll('.content');
+        contents.forEach(function (content) {
+            content.classList.remove('active');
+        });
+
+        // Hiển thị phần nội dung được chọn
+        let selectedContent = document.getElementById(contentId);
+        selectedContent.classList.add('active');
+    }
+
+    // Mặc định hiển thị phần "Bài đánh giá"
+    document.addEventListener("DOMContentLoaded", function () {
+        showContent('reviews');
+    });
+</script>
+</body>
+
+</html>

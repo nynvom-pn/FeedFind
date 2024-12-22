@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedFind</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: white;
+            color: #24508c;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 40px;
+        }
+       
+        .container h2 {
+            text-align: center;
+        }
+        .container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .container input {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #24508c;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    <title>Giao Diện Sản Phẩm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .product-card {
+            width: 50%;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product-stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            background-color: #f9f9f9;
+        }
+
+        .product-stats div {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #555;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .product-stats div i {
+            font-size: 18px;
+            color: #888;
+        }
+
+        .product-stats div.liked i {
+            color: red;
+        }
+
+        .product-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0 5px;
+        }
+
+        .product-description {
+            color: #666;
+            margin: 5px 15px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .user-info img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .user-info span {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .comment-section {
+            padding: 10px 15px;
+            text-align: left;
+            border-top: 1px solid #eee;
+        }
+
+        .comment-section h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .comment-section .comments {
+            max-height: 100px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+
+        .comment-section .comments div {
+            background-color: #f1f1f1;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .comment-section input[type="text"] {
+            width: calc(100% - 80px);
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+        .comment-section button {
+            padding: 8px 15px;
+            background-color: #24508c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .comment-section button:hover {
+            background-color: #1c3d65;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="logo.jpg" alt="FeedFind Logo" style="height: 100px; vertical-align: middle; margin-right: -25px;">
+    </header>
+
+    <div class="product-card">
+        <img src="sach.png" alt="image">
+        <div class="product-stats">
+            <div id="likeBtn"><i>❤️</i> <span id="likeCount">100</span></div>
+            <div><i>💬</i> <span id="commentCount">33</span></div>
+            <div><i>👁️</i> <span>170</span></div>
+        </div>
+        <div class="Sách - Thép Đã Tôi Thế Đấy"></div>
+        <div class="Cuốn này mình đc gth rất nhiều và đã từng đọc, bìa cũ của nó đã rất xinh rồi mà bìa mới còn xinh hơn nữa, lẹ tay hốt liền một cuốn chứ mê quá ròi
+Nội dung thì khỏi pk nói nhé, hay vô cùng hơn cả vô cùng"> </div>
+        <div class="user-info">
+            <img src="avt.png" alt="User Avatar">
+            <span>username_1210</span>
+        </div>
+        <div class="comment-section">
+            <h3>Bình luận</h3>
+            <div class="comments" id="commentList">
+                <!-- Các bình luận sẽ xuất hiện tại đây -->
+            </div>
+            <input type="text" id="commentInput" placeholder="Thêm bình luận...">
+            <button onclick="addComment()">Bình luận</button>
+        </div>
+    </div>
+
+    <script>
+        // Tính năng thả tim
+        let likeBtn = document.getElementById('likeBtn');
+        let likeCount = document.getElementById('likeCount');
+        let isLiked = false;
+
+        likeBtn.addEventListener('click', function () {
+            isLiked = !isLiked; // Đảo trạng thái thích
+            if (isLiked) {
+                likeBtn.classList.add('liked');
+                likeCount.textContent = parseInt(likeCount.textContent) + 1; // Tăng lượt thích
+            } else {
+                likeBtn.classList.remove('liked');
+                likeCount.textContent = parseInt(likeCount.textContent) - 1; // Giảm lượt thích
+            }
+        });
+
+        // Tính năng thêm bình luận
+        function addComment() {
+            let commentInput = document.getElementById('commentInput');
+            let commentText = commentInput.value.trim();
+            let commentList = document.getElementById('commentList');
+            let commentCount = document.getElementById('commentCount');
+
+            if (commentText !== "") {
+                // Tạo bình luận mới
+                let newComment = document.createElement('div');
+                newComment.textContent = commentText;
+                commentList.appendChild(newComment);
+
+                // Tăng số lượng bình luận
+                commentCount.textContent = parseInt(commentCount.textContent) + 1;
+
+                // Xóa nội dung trong ô input
+                commentInput.value = '';
+            }
+        }
+    </script>
+</body>
+
+</html>

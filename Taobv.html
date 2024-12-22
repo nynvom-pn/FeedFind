@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedFind</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: white;
+            color: #24508c;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 40px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .container h2 {
+            text-align: center;
+        }
+        .container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .container input {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #24508c;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    <title>Quản lý bài viết</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        select {
+    width: 100%; /* Chiều rộng 100% của container */
+    height: 40px; /* Tăng chiều cao */
+    padding: 5px; /* Thêm khoảng cách giữa văn bản và biên */
+    font-size: 16px; /* Tăng kích thước chữ */
+    border-radius: 4px; /* Bo góc cho đẹp */
+    border: 1px solid #ccc; /* Đặt viền cho select */
+}
+        input[type="text"],
+        textarea {
+            padding: 10px;
+            margin-top: 5px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="file"] {
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #24508c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #24508c;
+        }
+
+        .result {
+            margin-top: 30px;
+        }
+
+        .post {
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .post img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .post-title {
+            font-size: 24px;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .post-content {
+            font-size: 16px;
+            color: #666;
+            margin-top: 15px;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: #24508c;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: #24508c;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 10px;
+            background-color:#24508c;
+            color: white;
+        }
+
+    </style>
+</head>
+<header>
+        <img src="logo.jpg" alt="FeedFind Logo" style="height: 100px; vertical-align: middle; margin-right: -25px;">
+    </header>
+
+<body>
+    <div class="navbar">
+        <a href="#home">Trang chủ</a>
+        <a href="#create-post">Tạo bài viết</a>
+        <a href="#contact">Liên hệ</a>
+    </div>
+
+    <div class="container" id="create-post">
+        <h2>Tạo bài viết mới</h2>
+        <form id="postForm">
+            <label for="category">Lĩnh vực:</label>
+             <select id="category" name="category" required>
+		<option value="none"> </option>
+                <option value="Làm đẹp">Làm đẹp</option>
+		<option value="Thời trang">Thời trang</option>
+		<option value="Ẩm thực">Ẩm thực</option>
+    		<option value="Công nghệ">Công nghệ</option>
+		<option value="Phim ảnh">Phim ảnh</option>
+		<option value="Âm nhạc">Âm nhạc</option>
+		<option value="Sách">Sách</option>
+		<option value="Trò chơi">Trò chơi</option>
+    		<option value="Học tập">Học tập</option>
+		<option value="Đồ gia dụng">Đồ gia dụng</option>
+		<option value="Di chuyển">Di chuyển</option>
+		<option value="Đồ nội thất">Đồ nội thất</option>
+		<option value="Bất động sản">Bất động sản</option>
+    		<option value="Công việc">Công việc</option>
+    		<option value="Sức khỏe">Sức khỏe</option>
+	   </select>
+
+
+            <label for="title">Tên sản phẩm/dịch vụ:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="content">Nội dung bài viết:</label>
+            <textarea id="content" name="content" rows="6" required></textarea>
+
+            <label for="image">Chọn ảnh:</label>
+            <input type="file" id="image" name="image" accept="image/*">
+
+            <button type="submit">Tạo bài viết</button>
+        </form>
+
+        <div class="result" id="resultContainer">
+            <h3>Bài viết đã tạo:</h3>
+            <!-- Các bài viết sẽ được hiển thị ở đây -->
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Quản lý bài viết. Tất cả các quyền được bảo lưu.</p>
+    </div>
+
+    <script>
+        document.getElementById('postForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const content = document.getElementById('content').value;
+    const category = document.getElementById('category').value; // Lấy giá trị của lĩnh vực
+    const image = document.getElementById('image').files[0];
+
+    // Tạo phần tử bài viết mới
+    const postDiv = document.createElement('div');
+    postDiv.classList.add('post');
+
+    // Thêm lĩnh vực
+    const postCategory = document.createElement('p');
+    postCategory.classList.add('post-category');
+    postCategory.textContent = `Lĩnh vực: ${category}`;
+    postDiv.appendChild(postCategory);
+
+    // Thêm tiêu đề
+    const postTitle = document.createElement('h4');
+    postTitle.classList.add('post-title');
+    postTitle.textContent = title;
+    postDiv.appendChild(postTitle);
+
+    // Thêm nội dung
+    const postContent = document.createElement('p');
+    postContent.classList.add('post-content');
+    postContent.textContent = content;
+    postDiv.appendChild(postContent);
+
+    // Thêm ảnh (nếu có)
+    if (image) {
+        const postImage = document.createElement('img');
+        postImage.src = URL.createObjectURL(image);
+        postDiv.appendChild(postImage);
+    }
+
+    // Thêm bài viết vào container kết quả
+    document.getElementById('resultContainer').appendChild(postDiv);
+
+    // Reset form sau khi tạo bài viết
+    document.getElementById('postForm').reset();
+});
+
+    </script>
+
+</body>
+
+</html>

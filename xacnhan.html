@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác Nhận Quy Đổi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: #333;
+        }
+
+        .confirmation-container {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px 30px;
+            max-width: 500px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .confirmation-container h1 {
+            color: #4facfe;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .confirmation-container p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .confirmation-container .success-message {
+            font-weight: bold;
+            color: #00c851;
+        }
+
+        .confirmation-container button {
+            background-color: #4facfe;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .confirmation-container button:hover {
+            background-color: #00c851;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-container">
+        <h1>Xác Nhận Quy Đổi</h1>
+        <p class="success-message">Bạn đã quy đổi <span id="amount">xxxx VNĐ</span> qua hình thức <span id="method">xxxx</span>.</p>
+        <p>Số tiền đang được duyệt và sẽ đến tay bạn trong 3-5 ngày. Cảm ơn bạn!</p>
+        <button onclick="goBack()">Quay lại</button>
+    </div>
+
+    <script>
+        // Lấy tham số từ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const method = urlParams.get('method') === 'bank' ? 'Ngân hàng' : 'Thẻ điện thoại';
+        const amount = urlParams.get('amount');
+
+        // Hiển thị thông tin quy đổi
+        document.getElementById('method').textContent = method;
+        document.getElementById('amount').textContent = `${amount} VNĐ`;
+
+        // Hàm quay lại trang trước
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

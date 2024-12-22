@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điểm thưởng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .pointscontainer {
+            width: 100%;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .pointsheader {
+            padding: 20px;
+            text-align: center;
+            background-color: #24508c;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .pointsheader h2 {
+            margin: 0;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .pointsheader p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: white;
+        }
+        
+        .pointshistory {
+            padding: 20px;
+        }
+        
+        .pointstabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        
+        .pointstab {
+            padding: 10px 20px;
+            border: none;
+            background-color: #f8f9fa;
+            color: #333;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .pointstab.active {
+            background-color: #24508c;
+            color: #fff;
+        }
+        
+        .pointstab:hover {
+            background-color: #729fde;
+            color: white;
+        }
+        
+        .pointshistory-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .pointshistory-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .pointshistory-item:hover {
+                    background-color: #8faeda; /* Màu nền khi hover */
+                }
+        
+        .pointstime {
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .pointsdescription {
+            font-size: 14px;
+            color: #333;
+            flex-grow: 1;
+            margin-left: 10px;
+        }
+        
+        .pointsamount {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .pointsamount.positive {
+            color: #28a745;
+        }
+        
+        .pointsamount.negative {
+            color: #dc3545;
+        }
+        
+        .pointstab {
+            padding: 10px 20px;
+            border: none;
+            background-color: #f8f9fa;
+            color: #333;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .pointstab.active {
+            background-color: #24508c;
+            color: #fff;
+        }
+        
+        .pointsexchange {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .pointsexchange h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        
+        .pointsexchange-details {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .pointsexchange-btn {
+            padding: 8px 16px;
+            background-color: #24508c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        
+        .pointsexchange-btn:hover {
+            background-color: #729fde;
+        }
+
+        
+        </style>
+        
+</head>
+<body>
+    <div class="pointscontainer">
+        <div class="pointsheader">
+            <h2>Điểm đang có: <span id="points-xu-balance">150000</span></h2>
+            <p>Thứ hạng sẽ được reset vào ngày 31-12-2024</p>
+        </div>
+        <div class="pointshistory">
+            <div class="pointstabs">
+                <button class="pointstab active">LỊCH SỬ</button>
+            </div>
+        </div>
+
+        <div class="pointshistory-list">
+            
+             <!-- Xu đã nhận -->
+             <div class="pointshistory-item received">
+                <span class="pointstime">24-12-2024</span>
+                <span class="pointsdescription">Chào mừng thành viên mới!<br>Nhận điểm thành công</span>
+                <span class="pointsamount positive">+10000</span>
+            </div>
+            <!-- Xu đã nhận -->
+            <div class="pointshistory-item received">
+                <span class="pointstime">24-12-2024</span>
+                <span class="pointsdescription">Bài đánh giá đầu tiên<br>Nhận điểm thành công</span>
+                <span class="pointsamount positive">+20000</span>
+            </div>
+            <!-- Xu đã nhận -->
+            <div class="pointshistory-item received">
+                <span class="pointstime">24-12-2024</span>
+                <span class="pointsdescription">Tương tác của bài đánh giá<br>Nhận điểm thành công</span>
+                <span class="pointsamount positive">+10000</span>
+            </div>
+            <!-- Xu đã nhận -->
+            <div class="pointshistory-item received">
+                <span class="pointstime">24-02-2024</span>
+                <span class="pointsdescription">Bình luận của bài đánh giá<br>Nhận điểm thành công</span>
+                <span class="pointsamount positive">+6600</span>
+            </div>
+            
+        </div>
+        <div class="pointscontainer">
+            <!-- Phần Quy Đổi Tiền -->
+            <style>
+                .pointsexchange {
+                    background: #f9f9f9;
+                    padding: 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    font-family: Arial, sans-serif;
+                    max-width: 600px;
+                    margin: auto;
+                }
+            
+                .pointsexchange h3 {
+                    text-align: center;
+                    color: #007bff;
+                }
+            
+                .pointsexchange p {
+                    text-align: center;
+                    font-size: 14px;
+                    color: #555;
+                }
+            
+                .exchange-form {
+                    margin-top: 20px;
+                }
+            
+                label {
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                    display: block;
+                    color: #333;
+                }
+            
+                select, input[type="text"], input[type="number"] {
+                    width: 100%;
+                    padding: 10px;
+                    margin-bottom: 15px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                }
+            
+                .option-buttons {
+                    display: flex;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                    margin-bottom: 15px;
+                }
+            
+                .option-button {
+                    flex: 1;
+                    background: #007bff;
+                    color: white;
+                    border: none;
+                    padding: 10px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    text-align: center;
+                    transition: background 0.3s;
+                }
+            
+                .option-button:hover {
+                    background: #0056b3;
+                }
+            
+                .option-button.active {
+                    background: #28a745;
+                }
+            
+                .exchange-btn {
+                    width: 100%;
+                    background: #007bff;
+                    color: white;
+                    padding: 12px;
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    transition: background 0.3s;
+                }
+            
+                .exchange-btn:hover {
+                    background: #0056b3;
+                }
+            
+                .exchange-details {
+                    display: none;
+                    margin-top: 15px;
+                }
+            
+                .exchange-details.active {
+                    display: block;
+                }
+            </style>
+            
+            <div class="pointsexchange">
+                <h3>Quy đổi điểm thưởng</h3>
+                <p>100 điểm = 100 VNĐ</p>
+            
+                <!-- Form Quy đổi -->
+                <form class="exchange-form">
+                    <!-- Loại quy đổi -->
+                    <label for="exchange-type">Chọn loại quy đổi:</label>
+                    <select id="exchange-type" name="exchange-type" onchange="updateExchangeForm()">
+                        <option value="bank">Tiền vào ngân hàng</option>
+                        <option value="phone-card">Thẻ điện thoại</option>
+                    </select>
+            
+                    <!-- Thông tin Ngân hàng -->
+                    <div id="bank-info" class="exchange-details">
+                        <label for="bank-name">Ngân hàng:</label>
+                        <select id="bank-name" name="bank-name">
+                            <option value="vietcombank">Vietcombank</option>
+                            <option value="techcombank">Techcombank</option>
+                            <option value="agribank">Agribank</option>
+                            <option value="vpbank">VPBank</option>
+                            <option value="mbbank">MB Bank</option>
+                        </select>
+            
+                        <label for="account-name">Tên chủ tài khoản:</label>
+                        <input type="text" id="account-name" name="account-name" placeholder="Nhập tên chủ tài khoản">
+            
+                        <label for="account-number">Số tài khoản:</label>
+                        <input type="text" id="account-number" name="account-number" placeholder="Nhập số tài khoản">
+            
+                        <label for="amount">Chọn số tiền muốn rút (VNĐ):</label>
+                        <div class="option-buttons">
+                            <button type="button" class="option-button" onclick="selectOption(this, 'bank', 50000)">50.000</button>
+                            <button type="button" class="option-button" onclick="selectOption(this, 'bank', 100000)">100.000</button>
+                            <button type="button" class="option-button" onclick="selectOption(this, 'bank', 200000)">200.000</button>
+                            <button type="button" class="option-button" onclick="selectOption(this, 'bank', 500000)">500.000</button>
+                        </div>
+                        <input type="hidden" id="bank-amount" name="bank-amount">
+                    </div>
+            
+                    <!-- Thông tin Thẻ Điện Thoại -->
+                    <div id="phone-card-info" class="exchange-details">
+                        <label for="telco">Chọn nhà mạng:</label>
+                        <select id="telco" name="telco">
+                            <option value="viettel">Viettel</option>
+                            <option value="mobifone">Mobifone</option>
+                            <option value="vinaphone">Vinaphone</option>
+                            <option value="vietnamobile">Vietnamobile</option>
+                        </select>
+            
+                        <label for="card-value">Chọn mệnh giá thẻ (VNĐ):</label>
+                        <div class="option-buttons">
+                            <button type="button" class="option-button" onclick="selectOption(this, 'phone', 10000)">10.000</button>
+                            <button type="button" class="option-button" onclick="selectOption(this, 'phone', 20000)">20.000</button>
+                            <button type="button" class="option-button" onclick="selectOption(this, 'phone', 50000)">50.000</button>
+                            <button type="button" class="option-button" onclick="selectOption(this, 'phone', 100000)">100.000</button>
+                            <button type="button" class="option-button" onclick="selectOption(this, 'phone', 200000)">200.000</button>
+                            <button type="button" class="option-button" onclick="selectOption(this, 'phone', 500000)">500.000</button>
+                        </div>
+                        <input type="hidden" id="phone-amount" name="phone-amount">
+                    </div>
+            
+                    <!-- Nút Gửi -->
+                    <button type="submit" class="exchange-btn">Xác nhận đổi thưởng</button>
+                </form>
+            </div>
+            
+            <script>
+                function updateExchangeForm() {
+                    const type = document.getElementById('exchange-type').value;
+                    document.getElementById('bank-info').classList.toggle('active', type === 'bank');
+                    document.getElementById('phone-card-info').classList.toggle('active', type === 'phone-card');
+                }
+            
+                function selectOption(button, type, value) {
+                    const allButtons = document.querySelectorAll(`.option-button`);
+                    allButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    if (type === 'bank') {
+                        document.getElementById('bank-amount').value = value;
+                    } else if (type === 'phone') {
+                        document.getElementById('phone-amount').value = value;
+                    }
+                }
+            </script>
+</body>
+</html>
+
+
+<script>
+    // Lấy các phần tử tab và danh sách lịch sử
+    // Lấy các phần tử tab và danh sách lịch sử
+let xuBalance = 150000; // Số điểm hiện tại
+const tabs = document.querySelectorAll(".pointstab");
+const historyItems = document.querySelectorAll(".pointshistory-item");
+
+// Hàm hiển thị các mục lịch sử dựa trên loại
+function filterHistoryItems(type) {
+    historyItems.forEach((item) => {
+        if (type === "all") {
+            item.style.display = "flex"; // Hiển thị tất cả
+        } else if (item.classList.contains(type)) {
+            item.style.display = "flex"; // Hiển thị nếu đúng loại
+        } else {
+            item.style.display = "none"; // Ẩn nếu không đúng loại
+        }
+    });
+}
+
+// Xử lý khi bấm vào từng tab
+tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+        // Loại bỏ trạng thái "active" trên tất cả các tab
+        tabs.forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        // Lấy text của tab để xác định loại cần lọc
+        const tabText = tab.textContent.trim();
+        if (tabText === "LỊCH SỬ") {
+            filterHistoryItems("all");
+        } else if (tabText === "ĐÃ NHẬN") {
+            filterHistoryItems("received");
+        } else if (tabText === "ĐÃ DÙNG") {
+            filterHistoryItems("used");
+        }
+    });
+});
+
+// Hiển thị điểm ban đầu
+document.getElementById("points-xu-balance").textContent = xuBalance;
+
+// Hàm xử lý quy đổi
+function exchangePoints(event) {
+    event.preventDefault(); // Ngăn form submit mặc định
+
+    const exchangeAmount = parseInt(document.getElementById("bank-amount").value || document.getElementById("phone-amount").value, 10); // Lấy số tiền muốn đổi
+    const pointsNeeded = exchangeAmount; // Mỗi 100 điểm = 100 VNĐ
+
+    if (!exchangeAmount || exchangeAmount <= 0) {
+        alert("Số tiền quy đổi phải lớn hơn 0!");
+        return;
+    }
+
+    if (xuBalance >= pointsNeeded) {
+        // Trừ số điểm trước khi hiển thị thông báo
+        xuBalance -= pointsNeeded;
+        document.getElementById("points-xu-balance").textContent = xuBalance; // Cập nhật số điểm còn lại
+
+        // Thêm lịch sử giao dịch
+        const historyList = document.querySelector(".pointshistory-list");
+        const historyItem = document.createElement("div");
+        historyItem.classList.add("pointshistory-item", "used");
+        historyItem.innerHTML = `
+            <span class="pointstime">${new Date().toLocaleDateString()}</span>
+            <span class="pointsdescription">Quy đổi tiền qua hình thức ${
+                document.getElementById("exchange-type").value === "bank" ? "Ngân hàng" : "Thẻ điện thoại"
+            }</span>
+            <span class="pointsamount negative">-${pointsNeeded} điểm</span>
+        `;
+        historyList.appendChild(historyItem);
+
+        // Thông báo thành công
+        alert("Quy đổi điểm thành công!");
+
+        // Chuyển hướng đến trang xác nhận nếu cần
+        setTimeout(() => {
+            window.location.href = `xacnhan.html?method=${document.getElementById("exchange-type").value}&amount=${exchangeAmount}`;
+        }, 5000); // Chờ 0.5 giây để người dùng kịp thấy thông báo
+    } else {
+        alert("Bạn không đủ điểm để quy đổi!");
+    }
+}
+
+// Gắn sự kiện submit cho form
+const exchangeForm = document.querySelector(".exchange-form");
+exchangeForm.addEventListener("submit", exchangePoints);
+
+
+</script>

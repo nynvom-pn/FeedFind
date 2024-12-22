@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedFind</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: white;
+            color: #24508c;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 40px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .container h2 {
+            text-align: center;
+        }
+        .container form {
+            display: flex;
+            flex-direction: column;
+        }
+        <meta charset="UTF-8">
+    <title>Đăng ký tài khoản</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .container input {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #24508c;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #1d3b72;
+        }
+        .container a {
+            text-align: center;
+            margin-top: 15px;
+            display: block;
+            color: #24508c;
+            text-decoration: none;
+        }
+
+    
+.age-selection-container {
+    text-align: center;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    max-width: 450px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.age-selection-container h2 {
+    margin-bottom: 20px;
+    color: #24508c;
+    font-size: 24px;
+}
+.age-options {
+    display: flex;
+    justify-content: space-between; /* Điều chỉnh khoảng cách đều giữa các tùy chọn */
+    gap: 10px;
+}
+
+.age-option {
+    background-color: #f4f4f4;
+    padding: 15px 25px; /* Cân chỉnh lại padding để cân đối */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Đảm bảo các tùy chọn cùng kích thước */
+    text-align: center; /* Canh chữ vào giữa */
+}
+
+.age-option span {
+    font-size: 16px; /* Giảm kích thước chữ để vừa trong khung */
+    font-weight: bold;
+    white-space: nowrap; /* Đảm bảo chữ không xuống dòng */
+}
+
+.age-option:hover {
+    transform: scale(1.1);
+    background-color: #24508c;
+    color: white;
+}
+
+        .interest-container {
+            display: none;
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .interest-container h2 {
+            margin-bottom: 20px;
+        }
+        
+        .interest-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f9f9f9;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .interest-item:hover {
+            background: #24508c;
+            color: white;
+        }
+        .interest-item input {
+            margin-right: 10px;
+        }
+        .interest-container button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #24508c;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px; }
+
+            .interest-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .interest-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .interest-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .interest-checkbox {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            appearance: none;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .interest-checkbox:checked {
+            background-color: #24508c;
+            border-color: #24508c;
+        }
+
+        .interest-label {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+
+.interest-item img {
+    width: 100%;
+    height: 150px; /* Chiều cao cố định */
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+}
+
+.interest-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+cursor: pointer;
+            width: 100%;
+        }
+        .interest-container button:hover {
+            background-color: #1d3b72;
+        }
+    
+}
+
+
+.main-header {
+    background-color: #24508c;
+    color: white;
+}
+ .navbar {
+            background-color: #24508c;
+            overflow: hidden;
+        }
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: l;
+    justify-content:left;
+    padding: 10px 20px;
+    background-color:#24508c;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+}
+
+.search-bar {
+    width: 50%;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.navbar-icons i {
+    margin: 0 10px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.navbar-icons i:hover {
+    color: #ddd;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 1000;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu ul li {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.dropdown-menu ul li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu ul li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.dropdown-menu ul li:hover {
+    background-color: #24508c;
+}
+
+/* Show menu when button clicked */
+.menu-toggle.active + .dropdown-menu {
+    display: block;
+}
+
+.navbar a:first-child {
+    margin-left: 145px; /* Chỉ áp dụng cho liên kết đầu tiên */
+}
+
+.navbar a:not(:first-child) {
+    margin-left: 20px; /* Giảm khoảng cách cho các liên kết còn lại */
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: #24508c;
+}
+
+
+        .banner {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    padding: 80px;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #24508c;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: all 0.3s ;
+    color: white;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column; /* Sắp xếp theo chiều dọc */
+    align-items: center; /* Căn giữa biểu tượng và tên */
+    margin: 30px 0;
+    text-decoration: none; /* Bỏ gạch dưới chữ */
+}
+
+.category-icon {
+    width: 30px; /* Kích thước biểu tượng */
+    height: 30px;
+    margin-bottom: 5px; /* Khoảng cách giữa biểu tượng và tên danh mục */
+}
+
+.category-item:hover {
+            transform: scale(1.05); /* Phóng to khi hover */
+        }
+
+.featured-posts {
+    margin-top: 30px;
+    margin-left:60px;
+    margin-right:60px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.featured-posts h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #24508c;
+}
+
+.featured-post-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+.featured-post-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+.featured-post-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.featured-post-item:hover {
+            transform: scale(1.05); /* Phóng to khi hover */
+            background-color: #e0e0e0; /* Màu nền khi hover */
+        }
+
+.leaderboard-container {
+    display: flex;
+    gap: 20px; /* Khoảng cách giữa hai bảng */
+    justify-content: space-between;
+    padding: 20px;
+   
+}
+
+.leaderboard:first-child {
+    margin-left: 40px; /* Bảng đầu tiên không cách bên trái */
+}
+
+.leaderboard:last-child {
+    margin-right: 40px; /* Bảng cuối không cách bên phải */
+}
+
+.leaderboard {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 0 5px; /* Chỉ cách nhau giữa các bảng là 10px (2 x 20px) */
+}
+
+
+
+.leaderboard h2 {
+    font-size: 24px;
+    color: #24508c;
+    margin-bottom: 20px;
+}
+
+.leaderboard-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: #24508c;
+    color: white;
+}
+
+.leaderboard-panel {
+    display: none;
+}
+
+.leaderboard-panel.active {
+    display: block;
+}
+
+.leaderboard-chart {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Căn các bong bóng theo đáy */
+    gap: 20px;
+    position: relative; /* Để định vị từng bong bóng riêng lẻ */
+}
+
+.bubble {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size, 100px);
+    height: var(--size, 100px);
+    background-color: #24508c;
+    color: white;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative; /* Để định vị riêng từng bong bóng */
+}
+
+.bubble:nth-child(2) {
+    transform: translateY(0px); /* Đẩy bong bóng số 2 lên trên */
+    background-color: #C6E5CE;
+}
+
+.bubble:nth-child(1) {
+    transform: translateY(20px); /* Đẩy bong bóng số 1 hơi cao hơn */
+    background-color: #F4AAAA;
+}
+
+.bubble:nth-child(3) {
+    transform: translateY(40); /* Bong bóng số 3 giữ nguyên vị trí */
+    background-color: #96B2D9;
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.user-item:last-child {
+    border-bottom: none;
+}
+
+.user-rank-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid #ccc; /* Màu viền */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.user-info {
+    flex: 1;
+}
+
+.username {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.user-score {
+    font-size: 14px;
+    margin: 0;
+    color: #777;
+}
+/* Hiệu ứng hover cho các mục trong bảng xếp hạng */
+.user-item:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateX(10px); /* Di chuyển nhẹ khi hover */
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng cho vòng tròn xếp hạng */
+.user-rank-circle {
+    background-color: white;
+    color: #24508c;
+    transform: scale(1); /* Ban đầu là kích thước bình thường */
+    transition: transform 0.3s ease;
+}
+
+.user-item:hover .user-rank-circle {
+    transform: scale(1.2); /* Phóng to khi hover */
+}
+
+/* Thêm hiệu ứng cho tên người dùng */
+.username {
+    font-size: 18px;
+    font-weight: bold;
+    color: #24508c;
+    transition: color 0.3s ease;
+}
+
+.user-item:hover .username {
+    color: #1d3b72; /* Đổi màu tên khi hover */
+}
+
+/* Hiệu ứng cho điểm người dùng */
+.user-score {
+    font-size: 14px;
+    color: #777;
+    transition: color 0.3s ease;
+}
+
+.user-item:hover .user-score {
+    color: #24508c; /* Đổi màu điểm khi hover */
+}
+
+/* Hiệu ứng loading cho bảng xếp hạng */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Áp dụng hiệu ứng loading cho từng mục người dùng */
+.leaderboard .user-item {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Tạo hiệu ứng bong bóng cho các vòng xếp hạng */
+.bubble {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size, 100px);
+    height: var(--size, 100px);
+    background-color: #24508c;
+    color: white;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: bold;
+    animation: bubbleAnimation 1s ease-in-out infinite;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes bubbleAnimation {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-10px);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Thêm hiệu ứng khi người dùng đạt vị trí xếp hạng cao */
+.bubble:nth-child(1) {
+    background-color: #F4AAAA;
+    animation-delay: 0.1s;
+}
+
+
+.bubble:nth-child(2) {
+    background-color: #C6E5CE;
+    animation-delay: 0.2s;
+}
+
+.bubble:nth-child(3) {
+    background-color: #96B2D9;
+    animation-delay: 0.3s;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.jpg" alt="FeedFind Logo" style="height: 100px; vertical-align: middle; margin-right: -25px;">
+    </header>
+    
+    <!-- Đăng ký -->
+    <div class="container" id="register-container">
+        <h2>Đăng ký</h2>
+        <form id="registerForm">
+            <input type="text" id="register-fullname" placeholder="Họ và tên" required>
+            <input type="text" id="register-username" placeholder="Tên đăng nhập" required>
+            <input type="password" id="register-password" placeholder="Mật khẩu" required>
+            <input type="password" id="register-confirm-password" placeholder="Nhập lại mật khẩu" required>
+            
+            <button type="button" onclick="register()">Đăng ký</button>
+        </form>
+        <a href="#" onclick="switchToLogin()">Đã có tài khoản? Đăng nhập</a>
+    </div>
+
+    <!-- Đăng nhập -->
+    <div class="container" id="login-container" style="display: none;">
+        <h2>Đăng nhập</h2>
+        <form id="loginForm">
+            <input type="text" id="login-username" placeholder="Tên đăng nhập" required>
+            <input type="password" id="login-password" placeholder="Mật khẩu" required>
+            <button type="button" onclick="login()">Đăng nhập</button>
+        </form>
+        <a href="#" onclick="switchToRegister()">Chưa có tài khoản? Đăng ký</a>
+    </div>
+
+    <!--ĐỘ tuổi-->
+    <div class="age-selection-container" id="age-selection" style="display: none;">
+        <h2>Bạn đang ở độ tuổi nào?</h2>
+        <div class="age-options">
+            <div class="age-option" onclick="selectAge('Dưới 12')">
+                <span>Dưới 12</span>
+            </div>
+            <div class="age-option" onclick="selectAge('12-17')">
+                <span>12-17</span>
+            </div>
+            <div class="age-option" onclick="selectAge('18-27')">
+                <span>18-27</span>
+            </div>
+            <div class="age-option" onclick="selectAge('Trên 27')">
+                <span>Trên 27</span>
+            </div>
+        </div>
+    </div>
+    <!-- Giao diện chọn độ tuổi -->
+<div class="age-selection-container" id="age-selection" style="display: none;">
+    <h2>Bạn đang ở độ tuổi nào?</h2>
+    <div class="age-options">
+        <div class="age-option" onclick="selectAge('Dưới 12')">
+            <span>Dưới 12</span>
+        </div>
+        <div class="age-option" onclick="selectAge('12-17')">
+            <span>12-17</span>
+        </div>
+        <div class="age-option" onclick="selectAge('18-27')">
+            <span>18-27</span>
+        </div>
+        <div class="age-option" onclick="selectAge('Trên 27')">
+            <span>Trên 27</span>
+        </div>
+    </div>
+</div>
+
+    <!-- Giao diện chọn lĩnh vực -->
+    <div class="interest-container" id="interest-container">
+        <h2>Chọn lĩnh vực bạn quan tâm</h2>
+        <div class="interest-grid">
+            <label class="interest-item">
+        <input type="checkbox" name="interest" value="Mỹ phẩm">
+        <img src="intlamdep.jpg" alt="Mỹ phẩm"> 
+    </label>
+            <label class="interest-item">
+                <input type="checkbox" name="interest" value="Thời trang"> 
+                <img src="intthoitrang.jpg" alt="Thời trang"> 
+            </label>
+            <label class="interest-item">
+                <input type="checkbox" name="interest" value="Ẩm thực">
+                <img src="intamthuc.jpg" alt="Ẩm thực"> 
+            </label>
+            <label class="interest-item">
+                <input type="checkbox" name="interest" value="Công nghệ"> 
+                <img src="intcongnghe.jpg" alt="Công nghệ">
+            </label>
+            <label class="interest-item">
+                <input type="checkbox" name="interest" value="Phim ảnh"> 
+                <img src="intphimanh.jpg" alt="Phim ảnh">
+            </label>
+            <label class="interest-item">
+                <input type="checkbox" name="interest" value="Âm nhạc"> 
+                <img src="intamnhac.jpg" alt="Âm nhạc">
+            </label>
+            <label class="interest-item">
+                <input type="checkbox" name="interest" value="Du lịch"> 
+                <img src="intdulich.jpg" alt="Du lịch">
+            </label>
+            <label class="interest-item">
+                <input type="checkbox" name="interest" value="Di chuyển"> 
+                <img src="intdichuyen.jpg" alt="Di chuyển">
+            </label>
+            <label class="interest-item">
+                <input type="checkbox" name="interest" value="Sách">
+                <img src="intsach.jpg" alt="Sách"> 
+            </label>
+            <label class="interest-item">
+                <input type="checkbox" name="interest" value="Trò chơi"> 
+                <img src="inttrochoi.jpg" alt="Trò chơi">
+            </label>
+        </div>
+        <button type="button">Hoàn tất</button>
+    </div>
+
+<div class="main-interface" id="main-interface" style="display: none;">
+  <header class="main-header">
+    <div style="display: flex; align-items: center; padding: 0px;">
+        <img src="logoFF.png" alt="Logo" style="height: 80px;margin-left: 100px; margin-right: 10px;">
+        <input type="text" placeholder="Tìm kiếm..." style="flex: 1; padding: 5px; border-radius: 5px; border: 1px solid #ccc; margin-right: 10px;">
+        <button id="search-btn" onclick="window.open('timkiem.html', '_blank');" style="padding: 8px 15px; background-color: #24508c; color: white; border: none; border-radius: 5px; cursor: pointer;margin-right: 100px">
+            Tìm kiếm
+        </button>
+    </div>
+</header>
+
+
+
+    <!--Giao diện taskbar-->
+    <div class="navbar">
+        <a href="#home">Trang chủ</a>
+        <a href="foryou.html" target="_blank">Dành cho bạn</a>
+	 <a href="#danhmuc">Danh mục</a>
+        <a href="#baivietnb">Bài viết nổi bật</a>
+        <a href="#bxh">Bảng xếp hạng</a>
+	<a href="taikhoan.html" target="_blank">Tài khoản</a>
+        </div>
+            <div class="banner">
+                <img id="bannerImage" src="bannerr1.jpg" alt="Banner" style="width: 100%; height: 450px;object-fit: cover; border-radius: 10px;">
+                <button onclick="prevImage()" class="prev-btn">❮</button>
+                <button onclick="nextImage()" class="next-btn">❯</button>
+            </div>
+            
+       
+        
+    <div class="categories">
+    <div id="danhmuc">
+    <div class="category-grid">
+        <a href="lamdep.html" target="_blank">
+    <div class="category-item">
+        <img src="lamdepp.jpg" alt="Làm đẹp" class="category-icon">
+        Làm đẹp
+    </div>
+</a>
+
+	  <a href="amthuc.html" target="_blank">
+    <div class="category-item">
+        <img src="amthuc.jpg" alt="Ẩm thực" class="category-icon">
+        Ẩm thực
+    </div>
+</a>
+
+<a href="thoitrang.html" target="_blank">
+    <div class="category-item">
+        <img src="thoitrang.jpg" alt="Thời trang" class="category-icon">
+        Thời trang
+    </div>
+</a>
+      
+        <div class="category-item">
+            <img src="congnghe.jpg" alt="Công nghệ" class="category-icon"></i>
+            Công nghệ
+        </div>
+        <div class="category-item">
+            <img src="phimanh.jpg" alt="Phim ảnh" class="category-icon"></i>
+            Phim ảnh
+        </div>
+        <div class="category-item">
+            <img src="amnhac.jpg" alt="Âm nhạc" class="category-icon"></i>
+            Âm nhạc
+        </div>
+        <div class="category-item">
+            <img src="sach.jpg" alt="Sách" class="category-icon"></i>
+            Sách
+        </div>
+        <div class="category-item">
+            <img src="trochoi.jpg" alt="Trò chơi" class="category-icon"></i>
+            Trò chơi
+        </div>
+        <div class="category-item">
+            <img src="hoctap.jpg" alt="Học tập" class="category-icon"></i>
+            Học tập
+        </div>
+        <div class="category-item">
+            <img src="amthuc.jpg" alt="Đồ gia dụng" class="category-icon"></i>
+            Đồ gia dụng
+        </div>
+        <div class="category-item">
+<img src="dichuyen.jpg" alt="Di chuyển" class="category-icon"></i>
+            Di chuyển
+        </div>
+        <div class="category-item">
+            <img src="noithat.jpg" alt="Đồ nội thất" class="category-icon"></i>
+            Đồ nội thất
+        </div>
+        <div class="category-item">
+            <img src="bds.jpg" alt="Bất động sản" class="category-icon"></i>
+            Bất động sản
+        </div>
+        <div class="category-item">
+            <img src="job.jpg" alt="Công việc" class="category-icon"></i>
+            Công việc
+        </div>
+        <div class="category-item">
+            <img src="suckhoe.jpg" alt="Sức khỏe" class="category-icon"></i>
+            Sức khỏe
+        </div>
+    </div>
+</div>
+
+<<!--Bài viết nổi bật-->
+    <div id="baivietnb">
+    <div class="featured-posts">
+        <h2>Bài viết nổi bật</h2>
+        <div class="featured-post-grid">
+            <div class="featured-post-item">
+		<a href="Baiviet1.html" target="_blank">
+    		 <img src="baiv1.png" alt="Bài viết 1" class="featured-post-img">
+		</a>
+            </div>
+            <div class="featured-post-item">
+                <a href="baiviet2.html" target="_blank">
+    		 <img src="baiviet2.jpg" alt="Bài viết 2" class="featured-post-img">
+		</a>
+            </div>
+            <div class="featured-post-item">
+               <a href="baiviet3.html" target="_blank">
+    		 <img src="baiviet3.jpg" alt="Bài viết 3" class="featured-post-img">
+		</a>
+	     </div>
+	     <div class="featured-post-item">
+               <a href="baiviet4.html" target="_blank">
+    		 <img src="baiviet4.png" alt="Bài viết 4" class="featured-post-img">
+		</a>
+	     </div>
+	     <div class="featured-post-item">
+               <a href="baiviet5.html" target="_blank">
+    		 <img src="baiviet5.png" alt="Bài viết 5" class="featured-post-img">
+		</a>
+	     </div>
+            <div class="featured-post-item">
+		<a href="Taobv.html" target="_blank">
+   	       <img src="taobaiviet.png" alt="Tạo bài viết" class="featured-post-img">
+		</a>  
+            </div>
+        </div>
+    </div>
+
+
+<!-- Container cho bảng xếp hạng -->
+<div id="bxh">
+<div class="leaderboard-container">
+    <!-- Bảng xếp hạng tuần -->
+    <div class="leaderboard">
+        <h2>Bảng xếp hạng tuần 03 của tháng 12</h2>
+        <div class="user-item">
+            <div class="user-rank-circle" style="border-color: #cfc9ff;">
+                <span>1</span>
+            </div>
+            <div class="user-info">
+                <p class="username">hieuthuhai</p>
+                <p class="user-score">1600000 điểm</p>
+            </div>
+        </div>
+        <div class="user-item">
+            <div class="user-rank-circle" style="border-color: #cfc9ff;">
+                <span>2</span>
+            </div>
+            <div class="user-info">
+                <p class="username">geminihh</p>
+                <p class="user-score">1438223 điểm</p>
+            </div>
+        </div>
+        <div class="user-item">
+        <div class="user-rank-circle" style="border-color:#cfc9ff;">
+            <span>3</span>
+        </div>
+        <div class="user-info">
+            <p class="username">isaac</p>
+            <p class="user-score">1238274 điểm</p>
+        </div>
+    </div> 
+    <div class="user-item">
+        <div class="user-rank-circle" style="border-color:#cfc9ff;">
+            <span>4</span>
+        </div>
+        <div class="user-info">
+            <p class="username">negav</p>
+            <p class="user-score">988038 điểm</p>
+        </div>
+    </div>
+
+    <div class="user-item">
+        <div class="user-rank-circle" style="border-color: #cfc9ff;">
+            <span>5</span>
+        </div>
+        <div class="user-info">
+            <p class="username">congduong</p>
+            <p class="user-score">843378 điểm</p>
+        </div>
+    </div>
+    </div>
+
+    <!-- Bảng xếp hạng tháng -->
+    <div class="leaderboard">
+        <h2>Bảng xếp hạng tháng 12</h2>
+        <div class="leaderboard-chart">
+            <div class="bubble" style="--size: 150px;">hieuthuhai<br>6234000 điểm</div>
+            <div class="bubble" style="--size: 180px;">domic<br>7348210 điểm</div>
+            <div class="bubble" style="--size: 130px;">masterd<br>6103821 điểm</div>
+        </div>
+        <div class="user-item">
+            <div class="user-rank-circle" style="border-color: #cfc9ff;">
+                <span>4</span>
+            </div>
+            <div class="user-info">
+                <p class="username">wean</p>
+                <p class="user-score">5012864 điểm</p>
+            </div>
+        </div>
+        <div class="user-item">
+        <div class="user-rank-circle" style="border-color: #cfc9ff;">
+            <span>5</span>
+        </div>
+        <div class="user-info">
+            <p class="username">atus</p>
+            <p class="user-score">5000134 điểm</p>
+        </div>
+    </div>
+</div>
+</div>
+
+
+    </div>
+</div>
+  
+    <script>
+
+        // Chuyển đổi giữa Đăng ký và Đăng nhập
+        function switchToLogin() {
+            document.getElementById("register-container").style.display = "none";
+            document.getElementById("login-container").style.display = "block";
+        }
+
+        function switchToRegister() {
+            document.getElementById("register-container").style.display = "block";
+            document.getElementById("login-container").style.display = "none";
+        }
+       
+        // Đăng ký tài khoản
+        function register() {
+    const fullName = document.getElementById("register-fullname").value;
+    const username = document.getElementById("register-username").value;
+    const password = document.getElementById("register-password").value;
+    const confirmPassword = document.getElementById("register-confirm-password").value;
+
+    if (fullName && username && password && confirmPassword) {
+        if (password !== confirmPassword) {
+            alert("Mật khẩu nhập lại không khớp.");
+            return;
+        }
+
+        if (localStorage.getItem(username)) {
+            alert("Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác.");
+        } else {
+            const userData = JSON.stringify({ fullName, password });
+            localStorage.setItem(username, userData);
+            alert("Đăng ký thành công! Vui lòng đăng nhập.");
+            switchToLogin();
+        }
+    } else {
+        alert("Vui lòng nhập đầy đủ thông tin.");
+    }
+}
+
+        // Đăng nhập tài khoản
+        function login() {
+    const username = document.getElementById("login-username").value;
+    const password = document.getElementById("login-password").value;
+
+    const storedUserData = localStorage.getItem(username);
+
+    if (storedUserData) {
+        const { fullName, password: storedPassword } = JSON.parse(storedUserData);
+
+        if (storedPassword === password) {
+            alert(`Đăng nhập thành công! Chào mừng ${fullName}`);
+            document.getElementById("login-container").style.display = "none";
+            showAgeSelection(); // Chuyển sang giao diện chọn tuổi
+        } else {
+            alert("Tên đăng nhập hoặc mật khẩu không đúng.");
+        }
+    } else {
+        alert("Tên đăng nhập không tồn tại.");
+    }
+}
+
+    </script>
+
+<script>
+    function selectAge(ageGroup) {
+        alert(`Bạn đã chọn độ tuổi: ${ageGroup}`);
+        // Thêm logic nếu cần chuyển đổi giao diện hoặc lưu thông tin
+        document.getElementById("age-selection").style.display = "none";
+        document.getElementById("interest-container").style.display = "block";
+    }
+    
+    function showAgeSelection() {
+        document.getElementById("login-container").style.display = "none";
+        document.getElementById("register-container").style.display = "none";
+        document.getElementById("age-selection").style.display = "block";
+    }
+    
+    // Kích hoạt hiển thị chọn độ tuổi sau khi đăng nhập hoặc đăng ký thành công
+    function loginSuccess() {
+        showAgeSelection();
+    }
+    </script>
+
+
+<script>
+    function showMainInterface() {
+        document.getElementById("interest-container").style.display = "none";
+        document.getElementById("main-interface").style.display = "block";
+    }
+
+    // Gắn sự kiện cho nút Hoàn tất
+    document.querySelector(".interest-container button").addEventListener("click", showMainInterface);
+</script>
+<script>
+document.getElementById("search-btn").addEventListener("click", function() {
+    const keyword = document.getElementById("search-input").value.trim();
+    if (keyword) {
+        window.open(`https://www.example.com/search?q=${encodeURIComponent(keyword)}`, "_blank");
+    } else {
+        alert("Vui lòng nhập từ khóa tìm kiếm.");
+    }
+});
+
+const images = ["banner1.jpg", "banner2.jpg", "banner3.jpg"];
+let currentImageIndex = 0;
+
+function showImage(index) {
+    const bannerImage = document.getElementById('bannerImage');
+    bannerImage.src = images[index];
+}
+
+function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    showImage(currentImageIndex);
+}
+
+function prevImage() {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    showImage(currentImageIndex);
+}
+function switchTab(tab) {
+        document.querySelectorAll('.leaderboard-panel').forEach(panel => {
+        panel.classList.remove('active');
+    });
+    document.querySelectorAll('.tab').forEach(button => {
+        button.classList.remove('active');
+    });
+
+       document.getElementById(tab).classList.add('active');
+    event.target.classList.add('active');
+}
+
+  
+</script>
+</body>
+</html>
